@@ -1,0 +1,34 @@
+name: Telco ColorCoder 
+
+on: [push, pull_request]
+
+jobs:
+
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug]
+
+    runs-on: windows-latest  # For a list of available runner types, refer to
+                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+
+    env:
+      Solution_Name: TelCo.ColorCoder.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
+#      Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+
+    # Run the app
+    - name: Run the App
+      run: dotnet run -p TelCo.ColorCoder 
