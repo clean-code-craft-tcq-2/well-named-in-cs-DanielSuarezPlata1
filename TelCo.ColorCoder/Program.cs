@@ -65,6 +65,8 @@ namespace TelCo.ColorCoder
             pairNumber = Program.FetchPairNummber(testPair2);
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
             Debug.Assert(pairNumber == 6);
+
+            Program.ShowReferenceManual();
         }
     }
 }
