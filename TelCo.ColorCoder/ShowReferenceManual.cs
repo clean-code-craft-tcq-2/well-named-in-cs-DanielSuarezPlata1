@@ -16,7 +16,9 @@ namespace TelCo.ColorCoder
             Console.WriteLine(String.Format("|{0,7}|{1,7}|{2,7}|", " Pair Number ", " Major Color ", " Minor Color "));
             Console.WriteLine("-------------------------------------------");
 
-            for (int i = 0; i < 25; i++)
+            int numberOfPairs = colorMapMajor.Length * colorMapMinor.Length;
+
+            for (int i = 0; i < numberOfPairs; i++)
             {
                 int pairNumber = i + 1;
 
