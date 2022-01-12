@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
 
 namespace TelCo.ColorCoder
 {
@@ -14,26 +13,11 @@ namespace TelCo.ColorCoder
         private static int FetchPairNummber(ColorPair pair)
         {
             // Find the major color in the array and get the index
-            int majorIndex = -1;
-            for (int i = 0; i < colorMapMajor.Length; i++)
-            {
-                if (colorMapMajor[i] == pair.majorColor)
-                {
-                    majorIndex = i;
-                    break;
-                }
-            }
-
+            int majorIndex = FetchColorIndex(colorMapMajor,pair.majorColor);
+            
             // Find the minor color in the array and get the index
-            int minorIndex = -1;
-            for (int i = 0; i < colorMapMinor.Length; i++)
-            {
-                if (colorMapMinor[i] == pair.minorColor)
-                {
-                    minorIndex = i;
-                    break;
-                }
-            }
+            int minorIndex = FetchColorIndex(colorMapMinor,pair.minorColor);
+            
             // If colors can not be found throw an exception
             if (majorIndex == -1 || minorIndex == -1)
             {
@@ -44,6 +28,22 @@ namespace TelCo.ColorCoder
             // Compute pair number and Return  
             // (Note: +1 in compute is because pair number is 1 based, not zero)
             return (majorIndex * colorMapMinor.Length) + (minorIndex + 1);
+        }
+
+        private static int FetchColorIndex(Color[] colorMap, Color pairMajorColor)
+        {
+            // Find the color in the array and get the index
+            int index = -1;
+            for (int i = 0; i < colorMap.Length; i++)
+            {
+                if (colorMap[i] == pairMajorColor)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
         }
     }
 }

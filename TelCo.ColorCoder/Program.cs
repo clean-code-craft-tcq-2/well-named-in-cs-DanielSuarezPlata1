@@ -66,7 +66,10 @@ namespace TelCo.ColorCoder
             Console.WriteLine("[In]Colors: {0}, [Out] PairNumber: {1}", testPair2, pairNumber);
             Debug.Assert(pairNumber == 6);
 
-            Program.ShowReferenceManual();
+            int numberOfPairsPrinted = Program.ShowReferenceManual();
+            int numberOfPairs = colorMapMajor.Length * colorMapMinor.Length;
+            Console.WriteLine("[Out] Number of pairs printed: {0}", numberOfPairsPrinted);
+            Debug.Assert(numberOfPairsPrinted == numberOfPairs);
         }
     }
 }
